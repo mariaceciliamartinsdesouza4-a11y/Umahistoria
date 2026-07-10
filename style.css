@@ -453,3 +453,42 @@ body {
     from { transform: translateY(0) rotate(0deg); }
     to { transform: translateY(110vh) rotate(720deg); }
 }
+
+
+/* =====================================
+     CONTROLE DE ROLAGEM DO TEXTO
+===================================== */
+.text-container {
+    max-height: 220px; /* Limita a altura do texto no celular */
+    overflow-y: auto;  /* Cria a rolagem interna se o texto passar do limite */
+    padding: 0 10px;
+    margin-bottom: 15px;
+    
+    /* Esconde a barra de rolagem visual no celular para ficar mais limpo */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.text-container::-webkit-scrollbar {
+    display: none; /* Oculta a barra no Chrome/Safari */
+}
+
+/* Garante que o papel caiba nas telas pequenas dos celulares atuais */
+@media(max-width: 768px) {
+    body {
+        overflow: hidden; /* Mantém o fundo fixo sem quebrar as partículas */
+    }
+    
+    .paper {
+        min-height: auto;
+        max-height: 90vh; /* O papel nunca vai passar do tamanho da tela */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .page p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
